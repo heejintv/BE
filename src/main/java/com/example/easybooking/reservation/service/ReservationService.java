@@ -25,9 +25,11 @@ public class ReservationService {
      * 1. 고객 예약 신청 로직 (Create)
      */
     @Transactional
-    public ReservationResponse createReservation(ReservationCreateRequest request, String providerId) {
+    public ReservationResponse createReservation(ReservationCreateRequest request, Long userId) {
         // ProviderId -> DB PK 변환
-        Long customerUserId = userService.getUserIDByProviderId(providerId);
+        // Long customerUserId = userService.getUserIDByProviderId(providerId);
+        // 인수로 받은 Long userId를 customerUserId로 그대로 사용.
+        Long customerUserId = userId;
 
         // 현재는 샵 ID와 담담 원장님 ID를 모두 shopId로 설정함. 추후 확장 예정.
         // 현재 shopId는 원장님 User.id
